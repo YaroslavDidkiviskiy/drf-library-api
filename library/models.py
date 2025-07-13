@@ -5,10 +5,10 @@ from django.db import models
 
 class Book(models.Model):
     STATUS_CHOICES = [
-        ('Hard', 'HARD'),
-        ('Soft', 'SOFT'),
+        ("Hard", "HARD"),
+        ("Soft", "SOFT"),
     ]
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, unique=True)
     author = models.CharField(max_length=255)
     cover = models.CharField(max_length=255, choices=STATUS_CHOICES, default="Hard")
     inventory = models.PositiveIntegerField(validators=[MinValueValidator(0)])

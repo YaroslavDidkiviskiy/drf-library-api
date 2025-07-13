@@ -6,7 +6,6 @@ from django.db import models
 from django.utils.translation import gettext as _
 
 
-
 class CustomerManager(BaseUserManager):
     """Define a model manager for User model with no username field."""
 
