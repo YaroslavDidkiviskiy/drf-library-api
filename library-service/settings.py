@@ -137,8 +137,8 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "Planetarium Service API",
-    "DESCRIPTION": "Order planetarium tickets",
+    "TITLE": "Library Service API",
+    "DESCRIPTION": "Borrow books from library",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
     "SWAGGER_UI_SETTINGS": {
