@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.core.validators import MinValueValidator
 from django.db import models
+from rest_framework.exceptions import ValidationError
 
 
 class Book(models.Model):
@@ -25,5 +26,15 @@ class Borrowing(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name="borrowings")
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="borrowings")
 
+    def clean(self):
+        if self.actual_return_date and self.actual_return_date < self.borrow_date:
+            raise ValidationError("Дата повернення не може бути раніше дати позичання")
+
+        if self.actual_return_date and self.pk:
+            original = Borrowing.objects.get(pk=self.pk)
+            if original.actual_return_date:
+                raise ValidationError("Не можна змінювати дату повернення для вже поверненої книжки")
+
     def __str__(self):
         return f"{self.book.title}, {self.borrow_date} - {self.expected_return_date}, {self.actual_return_date}"
+
