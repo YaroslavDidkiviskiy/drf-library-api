@@ -16,19 +16,19 @@ A complete Dockerized solution for book library management using Django REST Fra
    cd drf-library-api
 Create environment file:
 
-bash
-cp .envsample .env
+   ```bash
+   cp .envsample .env
 Edit the .env file with your configuration.
 
 Build and launch containers:
 
-bash
-docker-compose up --build -d
+   ```bash
+   docker-compose up --build -d
 Apply database migrations:
 
-bash
-docker-compose exec app python manage.py migrate
+   ```bash
+   docker-compose exec app python manage.py migrate
 Create superuser (optional):
 
-bash
+   ```bash
 docker-compose exec app python manage.py createsuperuser
