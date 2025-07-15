@@ -18,17 +18,19 @@ Create environment file:
 
    ```bash
    cp .envsample .env
+   ```
 Edit the .env file with your configuration.
 
 Build and launch containers:
 
    ```bash
    docker-compose up --build -d
+   ```
 Apply database migrations:
 
    ```bash
    docker-compose exec app python manage.py migrate
+   ```
 Create superuser (optional):
-
    ```bash
 docker-compose exec app python manage.py createsuperuser
