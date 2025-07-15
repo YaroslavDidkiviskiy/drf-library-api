@@ -1,21 +1,34 @@
-# 📚 DRF Library API
+# 📚 DRF Library API - Docker Edition
 
-REST API для керування бібліотекою книг, побудована на Django + Django REST Framework.
+A complete Dockerized solution for book library management using Django REST Framework.
 
-## 🧰 Технології
+## 🐳 Docker Installation
 
-- Python 3.12+
-- Django 5.x
-- Django REST Framework
-- SQLite (як БД за замовчуванням)
-- Simple JWT (аутентифікація)
-- Pytest для тестів
+### Prerequisites
+- Docker installed ([Download Docker](https://www.docker.com/get-started))
+- Docker Compose (included with Docker Desktop)
 
-## 🚀 Установка та запуск
+### Step-by-Step Setup
 
-```bash
-git clone https://github.com/YaroslavDidkivskiy/drf-library-api.git
-cd drf-library-api
-python -m venv venv
-source venv/bin/activate  # або .\venv\Scripts\activate на Windows
-pip install -r requirements.txt
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/YaroslavDidkivskiy/drf-library-api.git
+   cd drf-library-api
+Create environment file:
+
+bash
+cp .envsample .env
+Edit the .env file with your configuration.
+
+Build and launch containers:
+
+bash
+docker-compose up --build -d
+Apply database migrations:
+
+bash
+docker-compose exec app python manage.py migrate
+Create superuser (optional):
+
+bash
+docker-compose exec app python manage.py createsuperuser
